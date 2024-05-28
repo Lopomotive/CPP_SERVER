@@ -23,7 +23,8 @@ class ManualDebug(){
     unsigned char * Float_binary = (*unsigned char)malloc(Float_binary);
     void DebuggingTools(bool DownloadDebugger, int status){
       if(DownloadDebugger){
-        
+        system("sudo chmod 755 cpp_dump.sh");
+        system("./cpp_dumb.sh");
       }
     }
 }
