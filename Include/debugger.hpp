@@ -15,6 +15,7 @@
 #ifndef MANUALDEBUG 
 #define MANUALDEBUG
 class ManualDebug(){
+  //Use inline in these functions
   public:
     //Dont know how to do this otherwise
     typedef *void(*Debug_function)(void);
@@ -25,6 +26,16 @@ class ManualDebug(){
       if(DownloadDebugger){
         system("sudo chmod 755 cpp_dump.sh");
         system("./cpp_dumb.sh");
+        
+        
+        string * cpp_name_temp = nullptr; 
+        string * cpp_dump_name = (string*)malloc(sizeof(string));
+        string cpp_dump_name = "/cpp_dump"; //Should be obvious but good to be stated
+        ifstream f(name )
+
+        //Delete allocated memory, both methods not needed?
+        delete [] cpp_dump_name; 
+        free(cpp_dump_name)
       }
     }
 }
