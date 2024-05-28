@@ -1,4 +1,4 @@
-//This is a debugger that can debug programs in mutliple ways
+//This debugger file currently is awful and should be changed
 #include <cerr.h> 
 #include <iostream> 
 #include <fstream> 
@@ -6,6 +6,9 @@
 #include <sys/socket.h> 
 #include <stdio.h>
 #include "cpp_dump.hpp" //Third party debugging header
+using namespace std;
+#define READ_ERRORS true
+
 #ifdef DEBUG_BUILD
 #  define DEBUG(x) cerr << x
 #else
@@ -19,23 +22,31 @@ class ManualDebug(){
   public:
     //Dont know how to do this otherwise
     typedef *void(*Debug_function)(void);
-    ManualDebug(*Debug_function func) {};
+    ManualDebug(*Debug_function func) : (void)DebugFile() {};
     size_t Float_binary_size = 100; 
     unsigned char * Float_binary = (*unsigned char)malloc(Float_binary);
-    void DebuggingTools(bool DownloadDebugger, int status){
+    void DebuggingTools(bool DownloadDebugger){
       if(DownloadDebugger){
         system("sudo chmod 755 cpp_dump.sh");
-        system("./cpp_dumb.sh");
-        
-        
-        string * cpp_name_temp = nullptr; 
-        string * cpp_dump_name = (string*)malloc(sizeof(string));
-        string cpp_dump_name = "/cpp_dump"; //Should be obvious but good to be stated
-        ifstream f(name )
-
+        int cpp_dump_install = system("./cpp_dumb.sh");
+        if(cpp_dump_install==0){
+          cerr << "Failed to run";
+        }
+        else{
+          DownloadDebugger = true;
+        }
         //Delete allocated memory, both methods not needed?
         delete [] cpp_dump_name; 
         free(cpp_dump_name)
+      }
+      void DebugFile(*Debug_function func){
+        //Hopefully this dosent repeat it twice?
+        if(cpp_dump(func)){
+          cpp_dump(func);
+        }
+        else{
+          DEBUG(func);
+        }
       }
     }
 }
