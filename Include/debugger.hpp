@@ -1,5 +1,6 @@
 //Debugger will probably be updated
 #include <cerr.h> 
+#include <excetpion> 
 #include <iostream> 
 #include <stdio.h>
 #include "cpp_dump.hpp" //Third party debugging header
