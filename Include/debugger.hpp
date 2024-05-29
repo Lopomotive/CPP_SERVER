@@ -1,9 +1,6 @@
-//This debugger file currently is awful and should be changed
+//Debugger will probably be updated
 #include <cerr.h> 
 #include <iostream> 
-#include <fstream> 
-#include <string> 
-#include <sys/socket.h> 
 #include <stdio.h>
 #include "cpp_dump.hpp" //Third party debugging header
 using namespace std;
@@ -18,11 +15,11 @@ using namespace std;
 #ifndef MANUALDEBUG 
 #define MANUALDEBUG
 class ManualDebug(){
-  //Use inline in these functions
   public:
-    //Dont know how to do this otherwise
     typedef *void(*Debug_function)(void);
-    ManualDebug(*Debug_function func) : (void)DebugFile() {};
+    ManualDebug(*Debug_function func) : debugFunc(func){};
+    Debug_function debugFunc; 
+
     size_t Float_binary_size = 100; 
     unsigned char * Float_binary = (*unsigned char)malloc(Float_binary);
     void DebuggingTools(bool DownloadDebugger){
@@ -32,20 +29,17 @@ class ManualDebug(){
         if(cpp_dump_install==0){
           cerr << "Failed to run";
         }
-        else{
-          DownloadDebugger = true;
-        }
-        //Delete allocated memory, both methods not needed?
         delete [] cpp_dump_name; 
         free(cpp_dump_name)
       }
-      void DebugFile(*Debug_function func){
+      //Inline needed here?
+      inline void DebugFile(*Debug_function func){
         //Hopefully this dosent repeat it twice?
         if(cpp_dump(func)){
           cpp_dump(func);
         }
         else{
-          DEBUG(func);
+          DEBUG(func)
         }
       }
     }
