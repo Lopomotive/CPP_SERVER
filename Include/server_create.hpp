@@ -3,6 +3,8 @@
 #include "tcp_libs.hpp"
 #include "null_val.hpp"
 #include <string>
+#include <filesystem> 
+namespace fs = std::filesystem; 
 
 //If not included
 
@@ -12,6 +14,11 @@ class SocketOptions{
     //Continue the function below
     void SocketOptionsConfigFile(){
       string Socket_config_file = "socketoptions.conf"; 
+      fd = (int*)(malloc(sizeof(int))); 
+      fd = open(Socket_config_file, O_RDONLY); 
+      FILE * fd_d = 
+      for(const &auto Socket_config_file.size() : )
+      ofstream
     }
   protected: 
     char(socket_buffer[]);
