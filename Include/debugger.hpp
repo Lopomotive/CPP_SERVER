@@ -1,9 +1,8 @@
 //Debugger will probably be updated
-#include <cerr.h> 
-#include <excetpion> 
+#include <exception>
 #include <iostream> 
 #include <stdio.h>
-#include "cpp_dump.hpp" //Third party debugging header
+//#include "cpp_dump.hpp" Third party debugging header
 using namespace std;
 #define READ_ERRORS true
 
@@ -15,7 +14,7 @@ using namespace std;
 
 #ifndef MANUALDEBUG 
 #define MANUALDEBUG
-class ManualDebug(){
+class ManualDebug{
   public:
     typedef *void(*Debug_function)(void);
     ManualDebug(*Debug_function func) : debugFunc(func){};

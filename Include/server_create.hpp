@@ -2,6 +2,7 @@
 #include "server_observer.hpp"
 #include "tcp_libs.hpp"
 #include "null_val.hpp"
+#include "null_val.hpp" //Checkvalid function
 #include <string>
 #include <filesystem> 
 namespace fs = std::filesystem; 
@@ -13,12 +14,10 @@ class SocketOptions{
     //Check directory and look in files that end with .conf
     //Continue the function below
     void SocketOptionsConfigFile(){
-      string Socket_config_file = "socketoptions.conf"; 
-      fd = (int*)(malloc(sizeof(int))); 
-      fd = open(Socket_config_file, O_RDONLY); 
-      FILE * fd_d = 
-      for(const &auto Socket_config_file.size() : )
-      ofstream
+      ConfigFileRead cfg;
+
+      //Checks the config file from config_file_parse.hpp
+      
     }
   protected: 
     char(socket_buffer[]);

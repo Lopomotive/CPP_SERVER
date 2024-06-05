@@ -1,0 +1,1 @@
+This is really easy, something actully complex that uses syntax that can be resused easily, pretty much make me a complex program of your choice that servers a specific purpose to be used like a libary for other programs

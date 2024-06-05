@@ -12,7 +12,7 @@ namespace ArgumentParse{
   class Arguments{
     //Allocate memory
     template <typename T>
-    T arg(T argc, T argv[]) : m_argc(argv), m_argv(new char*[argc]); 
+    T arg(T argc, T argv[]) : m_argc(argv), m_argv(new char*[argc]); //Create constructor
     for(int i=0; i<argc; i++){
       m_argv[i] = new char *argv;
     }
