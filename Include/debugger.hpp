@@ -2,6 +2,7 @@
 #include <exception>
 #include <iostream> 
 #include <stdio.h>
+#include <filesystem>
 //#include "cpp_dump.hpp" Third party debugging header
 using namespace std;
 #define READ_ERRORS true
@@ -22,6 +23,7 @@ class ManualDebug{
 
     size_t Float_binary_size = 100; 
     unsigned char * Float_binary = (*unsigned char)malloc(Float_binary);
+    bool DownloadDebugger = true; //True for now
     void DebuggingTools(bool DownloadDebugger){
       if(DownloadDebugger){
         system("sudo chmod 755 cpp_dump.sh");
@@ -40,6 +42,14 @@ class ManualDebug{
         }
         else{
           DEBUG(func)
+        }
+      }
+      void DebugFilePath(auto file_path){
+        if(exist(file_path) || file_path.write()){
+          cout << "File valid" << endl; 
+        }
+        else{
+          perror << file_path << "Invalid" <<endl;
         }
       }
     }

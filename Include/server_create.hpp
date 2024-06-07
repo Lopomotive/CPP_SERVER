@@ -15,7 +15,7 @@ class SocketOptions{
     //Continue the function below
     void SocketOptionsConfigFile(){
       ConfigFileRead cfg;
-
+        
       //Checks the config file from config_file_parse.hpp
       
     }
