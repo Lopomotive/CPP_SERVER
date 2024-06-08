@@ -3,6 +3,8 @@
 #include <iostream> 
 #include <stdio.h>
 #include <filesystem>
+#include <functional>
+#include <vector>
 //#include "cpp_dump.hpp" Third party debugging header
 using namespace std;
 #define READ_ERRORS true
@@ -12,39 +14,33 @@ using namespace std;
 #else
 #  define DEBUG(x) do {} while (0)
 #endif
+//Check this out and learn how to do this, its embarssing that you do not
+template<typename... func> 
+vector<void*> GetDebugArgs(size_t count, func&&... args){
+  struct Debuggable{
+    Debuggable(auto func) : func(func) {};
+    auto func; 
+    if(func != nullptr)
+  }
+  va_list ap; 
+  if(count == nullptr || count != static_cast<unsigned int>(count)){
+    count = (size_t*)malloc(sizeof(apc)); //Size may change but it should be alright
+  }
+  for(int i=0; i<count; i++){
+    bool isValidarg = (... && is_same_v<decltype(args), Debuggable)
+  }
+}
 
 #ifndef MANUALDEBUG 
 #define MANUALDEBUG
-class ManualDebug{
-  public:
-    typedef *void(*Debug_function)(void);
-    ManualDebug(*Debug_function func) : debugFunc(func){};
-    Debug_function debugFunc; 
+struct ManualDebug{
+  template<typename T>
+    T
+};
+#endif
 
-    size_t Float_binary_size = 100; 
-    unsigned char * Float_binary = (*unsigned char)malloc(Float_binary);
-    bool DownloadDebugger = true; //True for now
-    void DebuggingTools(bool DownloadDebugger){
-      if(DownloadDebugger){
-        system("sudo chmod 755 cpp_dump.sh");
-        int cpp_dump_install = system("./cpp_dumb.sh");
-        if(cpp_dump_install==0){
-          cerr << "Failed to run";
-        }
-        delete [] cpp_dump_name; 
-        free(cpp_dump_name)
-      }
-      //Inline needed here?
-      inline void DebugFile(*Debug_function func){
-        //Hopefully this dosent repeat it twice?
-        if(cpp_dump(func)){
-          cpp_dump(func);
-        }
-        else{
-          DEBUG(func)
-        }
-      }
-      void DebugFilePath(auto file_path){
+
+   void DebugFilePath(auto file_path){
         if(exist(file_path) || file_path.write()){
           cout << "File valid" << endl; 
         }
@@ -53,5 +49,3 @@ class ManualDebug{
         }
       }
     }
-}
-#endif
