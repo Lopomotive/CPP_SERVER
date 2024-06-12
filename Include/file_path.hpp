@@ -1,18 +1,29 @@
-#include <filesystem> 
+//This is a beta version of the code although it works as intended
+#include <filesystem> //Filesystem may be unecessary 
+#include <sys/stat.h>
 #include <iostream>
-#include "debugger.hpp" //Still dosent have file debugging capabilities, will be added later
+#include <string>
 using namespace std;
-namespace fs = std::filesytem;
+void error_msg(auto variable) {
+  std::cerr << variable << " has an erorr" << endl;
+}
+namespace fs = std::filesystem;
 
 namespace file_system{
-  bool file(const string& filePath){
-    fd = (int*)malloc(sizeof(unsigned int));
-    fd = open(filePath, O_DWR);
-    if(fd > 0){
-      perror << "File error " << &filePath << endl;
+  template <typename T> 
+  bool checkpath(const string& path, const T& perm){
+    struct stat sb;
+
+    if constexpr(is_same_v<decltype(perm), int>){
+      return 0;
     }
-    return fs::exists(filePath);
+    if((S_ISDIR(sb.st_mode)) || sb.st_mode & perm){
+      return true;
+    }
+    else{
+      return (sb.st_mode & S_IFDIR)!=0;
+    }
   }
-  bool directory()
+  std::cout << path << " not found" << endl;
 }
 
