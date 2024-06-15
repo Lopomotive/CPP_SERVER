@@ -1,2 +1,3 @@
- Header_controll.hpp shall be tested tommorow with argumentparse.hpp 
- Expecting alot of error messages and reworks needing to be done
+file_path.hpp still needs work and be finnished 
+check_config_file.hpp then needs to intergrate file_path.hpp, they shall not be seperated as file_path.hpp is reusable code and im lazy 
+finnish check_config_file.hpp after
