@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 #include <optional> 
+#include <type_traits>
+#include <iterator>
+#include <functional>
+#include <vector>
+
 using namespace std;
 void error_msg(auto variable) {
   std::cerr << variable << " has an erorr" << endl;
@@ -14,24 +19,38 @@ namespace fs = std::filesystem;
 struct exe_files{
   template <typename... exe_files>
     vector <*string> files;
-    const string(exe_files..., optional<auto*>&param = nullopt){
-      for(const auto& files : sizeof(exe_files)){
+    const string config_file_param(exe_files&&... args, optional<auto*>&param = nullopt){
+      //Forward exe_files to vector
+      using element_type = remove_refrence_t<decltype(args)>; //Ignore if its refrence or pointer or normal
+      vector<element_type< files_vector(args...);
+      int * files_vector_size = sizeof(files_vector)
+      inline for(const auto& files : {
         fs::path cur_path(files);
         fs::directory_iterator itr(cur_path);
         fs::directory_iterator end_itr;
-        for(; itr!=end_itr)
-        fs::file_status exe_file_status = fs::status(itr->files); 
-        string permissions = [=](itr->exe_files);
-        void SetPermissions(string perm_rule){
-          auto show = [&](char op, perms perm){
-            permissions += (fs::perms::none=(perm & p) ? "-" : op);
-          };
-          show("a", fs::perms::owner_all); 
-          show("r", fs::perms::group_read);
-          show("r", fs::perms::others_read);
-          return permissions;
+        while(itr!=end_itr){
+          fs::file_status exe_file_status = fs::status(itr->files); 
+          string permissions = [=](char op,files);
+          void SetPermissions(string perm_rule){
+            auto show = [&](char op, perms perm){
+              permissions += (fs::perms::none=(perm & p) ? "-" : op);
+            };
+            auto Permissions_list = {
+              ("a", fs::perms::owner_all); 
+              ("r", fs::perms::group_read);
+              ("r", fs::perms::others_read);
+            };
+            show(Permissions_list);
+            return permissions;
+          }
+          set_permissions(permissions(files).permissions();
+          if(!fs::status(files).permissions() == permissions){
+            FILE * file_fd = fopen(files.c_str()); 
+            if(!file_fd){
+              error_msg(files);
+            }
+          }
         }
-        set_permissions(permissions(exe_files).permissions();
       }
     }
 }
