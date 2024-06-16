@@ -15,19 +15,30 @@ void error_msg(auto variable) {
 }
 namespace fs = std::filesystem;
 
+template <typedef itr_t>
+static void MapDirectory(string cur_dir, itr_t t){
+  for(; itr!=itr_end; itr++){
+
+  }
+}
+
+//Experimental code I might use later
+typedef struct {
+  using element_type = remove_refrence_t<decltype(args)>; //Ignore if its refrence or pointer or normal
+  int * files_vector_size = sizeof(files_vector);
+}Something_exp;
+
 //Continue with this tommorow
 struct exe_files{
   template <typename... exe_files>
-    vector <*string> files;
     const string config_file_param(exe_files&&... args, optional<auto*>&param = nullopt){
-      //Forward exe_files to vector
-      using element_type = remove_refrence_t<decltype(args)>; //Ignore if its refrence or pointer or normal
-      vector<element_type< files_vector(args...);
-      int * files_vector_size = sizeof(files_vector)
+
+      string cur_path = fs::current_path();
+      fs::directory_iterator itr_end;
+      fs::directory_iterator itr(cur_path);
+      MapDirectory(cur_path, )
       inline for(const auto& files : {
         fs::path cur_path(files);
-        fs::directory_iterator itr(cur_path);
-        fs::directory_iterator end_itr;
         while(itr!=end_itr){
           fs::file_status exe_file_status = fs::status(itr->files); 
           string permissions = [=](char op,files);
