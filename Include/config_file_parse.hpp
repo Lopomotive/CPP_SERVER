@@ -1,4 +1,5 @@
 #include "debugger.hpp" //Standard implemented debugger
+#include "check_config_file.hpp"
 #include <algorithm>
 #include <string> 
 #include <stdio.h> 

@@ -6,6 +6,17 @@
 #include <string> 
 #include <fstream> //Is that what it is called? 
 
+
+bool Conf_check(const *string fn){
+  fo
+    if(fn.substr(fn.find_last_of(".") + 1) == conf){
+      return true;
+    }
+    else{
+
+    }
+} 
+
 using namespace std;
 namespace fs = std::filesystem;
 namespace file_exist{
@@ -17,9 +28,9 @@ namespace file_exist{
 namespace folder_exist
 class CheckConfig{
   public:
-    //Change to something other then folder name?
     const string folder_name = "Config/";
-    if(is_directory)
+    if(fs::is_directory(folder_name) && file_exist) 
+      
   protected:
-    unsigned char* ChekConfigFile()
+    unsigned char* ChekConfigFile(); 
 }
